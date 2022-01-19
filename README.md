@@ -1,7 +1,13 @@
+# Form Output Editing - Carleton DHA
+
+Form Output Editing is a project by the Digital Humanities Associates at Carleton College intended to
+make Google Forms outputs easier to use, particularly in conjunction with other digital tools.
+
 # Filename Append
 
-This subproject focuses on making the filename available in the results Spreadsheet when
-choosing to include a File Upload option on a Form.
+Filename Append is a prototype Google Apps Script that makes the name of files uploaded via the File
+Upload response type available in the response Spreadsheet. Currently must be copied and pasted into
+a Script attached to the Spreadsheet collecting responses to the Form.
 
 Natively, Forms will populate a File Upload field with links to the uploaded files. While
 this may be useful online, it is limiting when trying to work with Form outputs offline,
@@ -10,6 +16,8 @@ as the number of submissions grows.
 
 The provided script, `FilenameAppend.gs`, will retrieve these filenames and append them in
 a new field.
+
+**NOTE**: This project may well be later deprecated in favor of a Spreadsheets Add-on with the same functionality.
 
 ## How to Use
 
