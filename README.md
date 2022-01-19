@@ -1,24 +1,68 @@
-# Form Output Editing - Carleton DHA
+# Filename Append
 
-Form Output Editing is a project by the Digital Humanities Associates at Carleton College intended to 
-make Google Forms outputs easier to use, particularly in conjunction with other digital tools.
+This subproject focuses on making the filename available in the results Spreadsheet when
+choosing to include a File Upload option on a Form.
 
-## filename-append/
+Natively, Forms will populate a File Upload field with links to the uploaded files. While
+this may be useful online, it is limiting when trying to work with Form outputs offline,
+especially when attempting to attribute files to submitters. This issue grows in relevance
+as the number of submissions grows.
 
-Filename Append is a prototype Google Apps Script that makes the name of files uploaded via the File
-Upload response type available in the response Spreadsheet. Currently must be copied and pasted into
-a Script attached to the Spreadsheet collecting responses to the Form.
+The provided script, `FilenameAppend.gs`, will retrieve these filenames and append them in
+a new field.
 
-For more, see the README in `filename-append/`.
+## How to Use
 
-**NOTE**: This project may well be later deprecated in favor of a Spreadsheets Add-on with the same functionality.
+### Step 1: Open a new Google form with option to "upload file" enabled
 
-## form-output-editor/
+![upload-enabled-google-form](./screenshots/form_example.png?raw=true "Form example")
 
-Form Output Editor contains a primary Python script and its supporting frameworks, which allow the
-user to generate edited versions of the outputs of a Form. This currently includes: managing field names,
-removing unwanted fields, and managing filenames of uploaded files.
+### Step 1: Link a Google Sheet to the form
 
-For more, see the README in `form-output-editor/`.
+![how-to-link-form](./screenshots/link_form_sheet.png?raw=true "Linking example")
 
-**NOTE**: Currently only available for Python3.
+![sheet-before-script](./screenshots/sheet_before_script.png?raw=true "Sheet before script is ran")
+
+### Step 2: Attach the Script (Copy-Paste) into Sheet's Script Editor
+
+![sheet-script-editor](./screenshots/sheet_script_editor.png?raw=true "How to get to script editor in Sheet")
+
+![sheet-editor-pasted](./screenshots/sheet_editor_pasted.png?raw=true "Script editor after code is pasted")
+
+### Step 2b: make sure to SAVE editor after script has been copied over (step 3 will be greyed out otherwise)
+
+![save-script-editor](./screenshots/save_script.png?raw=true "Save editor")
+
+### Step 3: Run manualUpdate function (Google will ask to enable permission for the first run)
+
+![run-manual-update](./screenshots/run_manual_update.png?raw=true "Run manual update")
+
+#### Check result (note: there should be a new column titled "Upload file here (Filename)". Title will follow "<image_name>-<author>.<file_extension> format).
+
+![sheet-after-script-is-ran](./screenshots/sheet_after_script.png?raw=true "Sheet after manualUpdate is ran")
+
+## Auto update on submission
+
+To enable auto update, bind autoUpdate function to "On form submit" trigger
+
+### Step 1: Navigate to Triggers panel
+
+![navigate-to-triggers-top-left](./screenshots/script_trigger.png?raw=true "Navigating to Trigger function")
+
+### Step 2: Add Trigger (bottom right corner)
+
+![add-trigger-bottom-right-blue-button](./screenshots/add_trigger.png?raw=true "Adding new trigger")
+
+### Step 3: Configure trigger to fire manualUpdate "On form submit"
+
+![add-trigger-bottom-right-blue-button](./screenshots/trigger_setting.png?raw=true "Adding new trigger")
+
+## Known Issues
+
+-
+
+## Changelog
+
+Versions are listed most recent to least recent.
+
+### Version 0.0.1:
